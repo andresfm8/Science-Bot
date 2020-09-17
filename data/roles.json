@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Biology",
+        "emoji": "🔬",
+        "roleId": "748619269276958801"
+    },
+    {
+        "name": "Biomedical Eng.",
+        "emoji": "🧪",
+        "roleId": "752350715497938954"
+    },
+    {
+        "name": "Chemistry",
+        "emoji": "⚗",
+        "roleId": "752965975460282599"
+    },
+    {
+        "name": "Education",
+        "emoji": "📜",
+        "roleId": "752350506319347764"
+    },
+    {
+        "name": "Electronic Eng.",
+        "emoji": "🔋",
+        "roleId": "747618346580705422"
+    },
+    {
+        "name": "Environmental Sci.",
+        "emoji": "🍃",
+        "roleId": "755250788858724362"
+    },
+    {
+        "name": "Entrepeneurship",
+        "emoji": "💡",
+        "roleId": "747618519905992854"
+    },
+    {
+        "name": "Environmental Eng.",
+        "emoji": "♻",
+        "roleId": "748604226149548075"
+    },
+    {
+        "name": "Genetics",
+        "emoji": "🧬",
+        "roleId": "752350831302672396"
+    },
+    {
+        "name": "Hardware",
+        "emoji": "🔧",
+        "roleId": "748604401593352262"
+    },
+    {
+        "name": "Materials",
+        "emoji": "🧴",
+        "roleId": "755251099027374121"
+    },
+    {
+        "name": "Mathematics",
+        "emoji": "📈",
+        "roleId": "755251221949841490"
+    },
+    {
+        "name": "Neuroscience",
+        "emoji": "🧠",
+        "roleId": "755251380717093025"
+    },
+    {
+        "name": "Physiology",
+        "emoji": "🦴",
+        "roleId": "752350637655851138"
+    },
+    {
+        "name": "Psychology",
+        "emoji": "📚",
+        "roleId": "755251461134352407"
+    },
+    {
+        "name": "Social Sci.",
+        "emoji": "🌐",
+        "roleId": "755251650784002068"
+    }  
+]

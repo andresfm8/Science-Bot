@@ -12,32 +12,36 @@ module.exports = class CreateTicket extends Command {
             examples: ['!openticket how to make an effective pitch @peer1 @peer2'],
             args: [
                     {
-                        key: 'text',
-                        prompt: 'What would you like to place a ticket for?',
-                        type: 'string',
-                        validate: text => {
-                            if(!text.startsWith('<')) return true;
-                            return 'You must specify the reason for your ticket. Type !help to receive more detailed information about the commands';    
-                        }
-                    },
-                    {
                         key: 'memberOne',
                         prompt: 'Who are your teammates?',
                         type: 'user',
-                        default: ''
+                        default: '',
+                        validate: memberOne => checkMembers(memberOne)
                     },
                     {
                         key: 'memberTwo',
                         prompt: 'Who are your teammates?',
                         type: 'user',
-                        default: ''
+                        default: '',
+                        validate: memberTwo => checkMembers(memberTwo)
                     },
                     {
                         key: 'memberThree',
                         prompt: 'Who are your teammates?',
                         type: 'user',
-                        default: ''
-                    }
+                        default: '',
+                        validate: memberThree => checkMembers(memberThree)
+                    },
+                    {
+                        key: 'text',
+                        prompt: 'What would you like to place a ticket for?',
+                        type: 'string',
+                        max: 300,
+                        validate: text => {
+                            if(!text.startsWith('<')) return true;
+                            return 'You must specify the reason for your ticket. Type !help to receive more detailed information about the commands';    
+                        }
+                    },
                 ]
 		});
     }
@@ -99,7 +103,7 @@ module.exports = class CreateTicket extends Command {
     //Receive !ticket @groupName array and reason for the ticket
 	async run(message, {memberOne, memberTwo, memberThree, text}) {
         //Delete message to keep channel clear
-        if(message.content.startsWith(`!openticket`)) {
+        if(message.content.startsWith(`!openticket`) || !message.content.startsWith(`!openticket`)) {
             message.channel.bulkDelete(1);
         }
         let guild = this.client.guilds.cache.get('740344876331172011'); //Category to place channel in
@@ -118,3 +122,10 @@ module.exports = class CreateTicket extends Command {
         } 
     }
 };
+
+function checkMembers(member){
+    if(!member.startsWith('<'))  {
+        member = '';
+    }
+    return true;
+}

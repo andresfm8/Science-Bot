@@ -11,11 +11,11 @@ module.exports = class CompleteTicket extends Command {
             args: [
                     {
                         key: 'text',
-                        prompt: 'What would you like to place a ticket for?',
-                        type: 'string',
+                        prompt: 'You must specify the number of messages to delete (max 10)',
+                        type: 'integer',
                         validate: text => {
-                            if(text < 10) return true;
-                            return 'You must specify the reason for your ticket. Type !help to receive more detailed information about the commands';    
+                            if(text < 11) return true;
+                            return 'You cant delete more than 10 messages at the same time';    
                         }
                     }
                 ]

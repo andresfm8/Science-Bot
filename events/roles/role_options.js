@@ -1,23 +1,27 @@
 const { Discord } = require('discord.js');
 const { MessageEmbed } = require('discord.js');
 
-module.exports = async function sendRolesEmbed(client) {
+const fs = require('fs')
+const roles = JSON.parse(fs.readFileSync('data/roles.json', 'utf8'));
 
-    const channel = client.channels.cache.find(channel => channel.name === 'assign-roles');
+module.exports = async function sendRolesEmbed(client) {
+    //Find channel with specified name
+    const channel = client.channels.cache.find(channel => channel.name === 'assign-interests');
 
     let interestsEmbed = new MessageEmbed()
         .setTitle('Select your interests')
         .setDescription(`React to gain the role \n
-                        💡 Entrepeneurship \n
-                        🔧 Hardware \n
-                        🔋 Electronic Eng. \n
-                        ♻ Environmental Eng. \n
-                        📙 Another Role`)
+                        ${displayRoles()}`)
         .setColor('GREEN');
     let msgEmbed = await channel.send(interestsEmbed);
-    msgEmbed.react('💡')
-    .then(msgEmbed.react('🔧'))
-    .then(msgEmbed.react('🔋'))
-    .then(msgEmbed.react('♻'))
-    .then(msgEmbed.react('📙'))
+
+    roles.forEach(role => msgEmbed.react(role.emoji));
+}
+//Create a string that has all roles with their respective emojis
+function displayRoles(){
+    let roleList =''
+    roles.forEach(role =>{
+        roleList += `${role.emoji} ${role.name}\n`
+    })
+    return roleList;
 }

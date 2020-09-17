@@ -20,7 +20,7 @@ const client =  new CommandoClient({
 client.registry.registerDefaultTypes()
                 .registerGroup('general', 'General Commands')
                 .registerDefaultGroups()
-                .registerDefaultCommands()
+                .registerDefaultCommands({ help: false })
                 .registerCommandsIn(path.join(__dirname, '/commands'));
 
 client.once('ready', () => {
@@ -34,12 +34,13 @@ client.on('message', message => mediaReaction(message));
 client.on('messageReactionAdd', async (reaction, user) => pushMessage(reaction, user));
 client.on('messageReactionAdd', async (reaction, user) => deleteMessage(reaction, user));
 
-client.on('messageReactionAdd', async (reaction, user) => selectRoles(client, reaction, user));
-client.on('messageReactionRemove', async (reaction, user) => removeRoles(client, reaction, user));
+client.on('messageReactionAdd', async (reaction, user) => selectRoles(reaction, user));
+client.on('messageReactionRemove', async (reaction, user) => removeRoles(reaction, user));
 //Assign hacker role to every new member
 client.on('guildMemberAdd', (guildMember) => {
     guildMember.roles.add(guildMember.guild.roles.cache.find(role => role.id === '746036114464309248'))
-    .then(guildMember.roles.add(guildMember.guild.roles.cache.find(role => role.id === '746114639317696604')));
+    .then(guildMember.roles.add(guildMember.guild.roles.cache.find(role => role.id === '746114639317696604')))
+    .then(guildMember.message('Welcome message test'));
  });
 
 client.on('error', console.error);
