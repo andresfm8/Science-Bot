@@ -51,7 +51,7 @@ module.exports = class CreateTicket extends Command {
     async createChannel(guild, message, reason) {
         //Create support channel
         let channel = await guild.channels.create(`${message.author.username} - ticket`, {
-            parent: '741032121623117914',
+            parent: '741032121623117914', 
             topic: `!Complete to close the ticket | Support for ${message.author.tag} | ID: ${message.author.id}`,
             permissionOverwrites: [{
                                         allow: "VIEW_CHANNEL",
@@ -106,7 +106,7 @@ module.exports = class CreateTicket extends Command {
         if(message.content.startsWith(`!openticket`) || !message.content.startsWith(`!openticket`)) {
             message.channel.bulkDelete(1);
         }
-        let guild = this.client.guilds.cache.get('740344876331172011'); //Category to place channel in
+        let guild = this.client.guilds.cache.get('740344876331172011'); //Category to place channel in 741032121623117914
         //Check correct ticket channel
         if( message.channel.id !== '741670607636398111') return;
         const dmEmbed = new MessageEmbed()

@@ -1,4 +1,4 @@
-const { Command } = require('discord.js-commando');
+xconst { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class CompleteTicket extends Command {
@@ -20,7 +20,8 @@ module.exports = class CompleteTicket extends Command {
         //Only the user that placed the ticket can mark it as completed
         const channelName = `${message.channel.name}`.toString().toLowerCase();
         const authorName = `${message.author.username}-ticket`.toString().toLowerCase();
-        if (channelName.includes(authorName)) {
+    
+        if (channelName.includes(authorName.replace(/\s+/g, '-'))) {//Replace in the server: it removes spaces and replace with dashes
             message.channel.delete();
             const completeEmbed = new MessageEmbed()
                 .setAuthor(`${message.author.tag}-ticket`)
