@@ -1,5 +1,5 @@
 # Science-Bot
-Discord Bor for the Hackathon for Science Education at University of Toronto with a 100+ users.
+Discord Bot for the Hackathon for Science Education at University of Toronto with a 100+ users.
 
 ## Commands
 ```js
